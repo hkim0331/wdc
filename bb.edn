@@ -1,0 +1,4 @@
+{:path ["bb"]
+
+ :deps {org.babashka/http-client {:mvn/version "0.0.3"}}}
+
