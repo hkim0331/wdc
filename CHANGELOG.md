@@ -10,6 +10,8 @@
 - use Automator
 - wake-before-wdc.sh: only one pmset repeat allowed.
   use corn? not so good.
+- check out as m64:clojure/wdc
+- symlink from m64:utils/wdc
 
 
 ## 0.1.0 - 2023-02-01
