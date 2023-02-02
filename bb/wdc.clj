@@ -3,12 +3,12 @@
 
 (def url (or (System/getenv "WDC_URL") "http://localhost:3000/"))
 
-(def params {"user_id" (or (System/getenv "WDC_USER") "user_id")
-             "pasword" (or (System/getenv "WDC_PASS") "password")
-             "watch"   ""})
+(def params {"user_id"  (or (System/getenv "WDC_USER") "user_id")
+             "password" (or (System/getenv "WDC_PASS") "password")
+             "watch"    ""})
 
 (defn wdc [params]
-  (:body (http/post url {:form-params params})))
+  (:status (http/post url {:form-params params})))
 
 (defn in  [_] (wdc (merge params {"dakoku"  "syussya"})))
 
