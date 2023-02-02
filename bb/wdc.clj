@@ -1,28 +1,21 @@
-#!/usr/bin/env bb
-
+(ns wdc)
 (require '[babashka.http-client :as http])
 
-(def develop true)
-;;
-(if develop
-  (def url "http://localhost:3000/")
-  (def url "https://jinji-w.jimu.kyutech.ac.jp/cws/srwtimerec"))
+(def url (or (System/getenv "WDC_URL") "http://localhost:3000/"))
 
-(def param {"user_id" (System/getenv "WDC_USER")
-            "pasword" (System/getenv "WDC_PASSWORD")
-            "watch"   ""})
-
-(def in (merge param {"dakoku"  "syussya"}))
-
-(def out (merge param {"dakoku"  "taisya"}))
+(def params {"user_id" (or (System/getenv "WDC_USER") "user_id")
+             "pasword" (or (System/getenv "WDC_PASS") "password")
+             "watch"   ""})
 
 (defn wdc [params]
   (:body (http/post url {:form-params params})))
 
-(defn wdc-in  [] (wdc in))
-(defn wdc-out [] (wdc out))
+(defn in  [_] (wdc (merge params {"dakoku"  "syussya"})))
+
+(defn out [_] (wdc (merge params {"dakoku"  "taisya"})))
 
 (comment
-  (wdc-in)
-  (wdc-out)
+  ;; in/out requires an argument. dummy.
+  (in  0)
+  (out 0)
   :rcf)
