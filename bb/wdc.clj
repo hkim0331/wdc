@@ -1,21 +1,21 @@
-(ns wdc)
-(require '[babashka.http-client :as http])
+#!/usr/bin/env bb
+(require '[babashka.http-client :as http]
+         '[clojure.tools.logging :as log])
 
 (def url (or (System/getenv "WDC_URL") "http://localhost:3000/"))
-
 (def params {"user_id"  (or (System/getenv "WDC_USER") "user_id")
              "password" (or (System/getenv "WDC_PASS") "password")
              "watch"    ""})
 
-(defn wdc [params]
-  (:status (http/post url {:form-params params})))
+(defn wdc [url params]
+  (try
+    ;; (log/debug "wdc:url:" url)
+    (log/debug "wdc:params:" params)
+    (:status (http/post url {:form-params params}))
+    (catch Exception e (log/error (.getMessage e)))))
 
-(defn in  [_] (wdc (merge params {"dakoku"  "syussya"})))
-
-(defn out [_] (wdc (merge params {"dakoku"  "taisya"})))
-
-(comment
-  ;; in/out requires an argument. dummy.
-  (in  0)
-  (out 0)
-  :rcf)
+(let [verb (first *command-line-args*)]
+  (case verb
+    "in"  (wdc url (merge params {"dakoku" "syussya"}))
+    "out" (wdc url (merge params {"dakoku" "taisya"}))
+    (log/warn "usage: wdc.clj [in|out]")))
