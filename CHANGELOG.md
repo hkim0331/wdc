@@ -3,12 +3,17 @@
 - caution spelling, `syussya` and `taisya`.
 
 ## Unreleased
-
 - command `at` is disabled on macos.
 - caution spell `syussya` and `taisya`
 - Automator does not work while mac is sleeping.
   Must wake mac up before Automator runs.
 - 2023-02-03 error: java.net.ConnectException at wdc.clj:11:12
+- log file's TIMEZONE is not JST
+
+
+## 0.1.3 - 2023-02-03
+- "env: bb:" No such file or directory
+  #!/usr/bin/env bb is impossible in Automator?
 
 ## 0.1.2 - 2023-02-03
 - #!/usr/bin/env bb
