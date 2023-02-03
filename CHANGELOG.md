@@ -9,11 +9,13 @@
 - Automator does not work while mac is sleeping.
   Must wake mac up before Automator runs.
 - 2023-02-03 error: java.net.ConnectException at wdc.clj:11:12
-- exceptions
-- logging
-- #!/usr/bin/env bb
 
-## 0.1.2-SNAPSHOT
+## 0.1.2 - 2023-02-03
+- #!/usr/bin/env bb
+- exceptions when `babashka.http-client` errors
+- logging in `log` folder
+- `data` folder to keep error screen shots
+- git ignored `log` and `data` folders
 
 ## 0.1.1 - 2023-02-02
 - added wdc-example.sh
