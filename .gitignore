@@ -9,3 +9,4 @@ wdc.sh
 wdc-in.sh
 wdc-out.sh
 data/
+log/

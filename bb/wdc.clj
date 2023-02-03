@@ -9,7 +9,7 @@
 
 (defn wdc [url params]
   (try
-    (log/debug "wdc:url:" url)
+    ;; (log/debug "wdc:url:" url)
     (log/debug "wdc:params:" params)
     (:status (http/post url {:form-params params}))
     (catch Exception e (log/error (.getMessage e)))))
@@ -18,13 +18,4 @@
   (case verb
     "in"  (wdc url (merge params {"dakoku" "syussya"}))
     "out" (wdc url (merge params {"dakoku" "taisya"}))
-    (println "usage: wdc.clj [in|out]")))
-
-
-;; (defn in  [_] (wdc (merge params )))
-;; (defn out [_] (wdc (merge params {"dakoku"  "taisya"})))
-;; (comment
-;;   ;; in/out requires an argument. dummy.
-;;   (in  0)
-;;   (out 0)
-;;   :rcf)
+    (log/warn "usage: wdc.clj [in|out]")))
