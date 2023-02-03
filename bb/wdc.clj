@@ -1,4 +1,3 @@
-#!/usr/bin/env bb
 (require '[babashka.http-client :as http]
          '[clojure.tools.logging :as log])
 
@@ -9,8 +8,9 @@
 
 (defn wdc [url params]
   (try
-    ;; (log/debug "wdc:url:" url)
+    (log/debug "wdc:url:" url)
     (log/debug "wdc:params:" params)
+    (log/info "wdc")
     (:status (http/post url {:form-params params}))
     (catch Exception e (log/error (.getMessage e)))))
 
