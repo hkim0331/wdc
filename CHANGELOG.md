@@ -10,7 +10,6 @@
 - 2023-02-03 error: java.net.ConnectException at wdc.clj:11:12
 - log file's TIMEZONE is not JST
 
-
 ## 0.1.3 - 2023-02-03
 - "env: bb:" No such file or directory
   #!/usr/bin/env bb is impossible in Automator?
