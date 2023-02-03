@@ -1,11 +1,15 @@
 # wdc
 
-## 2023-02-02
-- duct のほうがサイズ半分。
-- syussya|taisya の綴りに注意。
-- babashka.http-client では wd サーバ受け付けない。マジで？何が違う？
-- at で回せばいいか。
-- mac スリープ中は Automator 動かん。ってことは mac 以外で動かさないと。
+WEB 打刻の忘却防止。
+
+平日、9:00 に出勤、17:00 に退勤の打刻オペレーションを代行させる。
+それより早い出勤、遅い退勤は上書きになる。
+
+## License
+
+Free. 2023 Hiroshi Kimura
+
+
 
 
 
