@@ -5,15 +5,15 @@
 ## Unreleased
 
 - command `at` is disabled on macos.
-- log
-- try ~ exception
 - caution spell `syussya` and `taisya`
 - Automator does not work while mac is sleeping.
   Must wake mac up before Automator runs.
 - 2023-02-03 error: java.net.ConnectException at wdc.clj:11:12
+- exceptions
+- logging
+- #!/usr/bin/env bb
 
-
-## 0.2.2-SNAPSHOT
+## 0.1.2-SNAPSHOT
 
 ## 0.1.1 - 2023-02-02
 - added wdc-example.sh

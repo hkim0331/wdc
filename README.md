@@ -7,9 +7,7 @@ WEB 打刻の忘却防止。
 
 ## License
 
-Free.
-
-Hiroshi Kimura
+Free. 2023 Hiroshi Kimura
 
 
 
