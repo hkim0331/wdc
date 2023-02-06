@@ -1,5 +1,8 @@
 #!/bin/sh
-# can set only one `repeat` job.
+# can set only one `repeat` job. must use `sudo`.
 # pmset -g sched
-pmset repeat wake MTWRF 08:20:00
+
+# wake at 8:30 weekdays and sleep at 19:30
+pmset repeat wakeorpoweron MTWRF 8:30:00 sleep MTWRF 19:30:00
+
 
