@@ -10,8 +10,8 @@
   (try
     (log/debug "wdc:url:" url)
     (log/debug "wdc:params:" params)
-    (log/info "wdc")
     (:status (http/post url {:form-params params}))
+    (log/info  "wdc" (params "dakoku") "success")
     (catch Exception e (log/error (.getMessage e)))))
 
 (let [verb (first *command-line-args*)]
