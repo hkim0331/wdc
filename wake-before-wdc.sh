@@ -1,5 +1,5 @@
 #!/bin/sh
-# can set only one `repeat` job. must use `sudo`.
+# Admin user can set only one `repeat` job.
 # to view repeat tasks, use `pmset -g sched`.
 
 # wake at 8:30 weekdays and sleep at 19:30
