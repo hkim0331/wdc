@@ -1,14 +1,15 @@
 # Chagelog
 
-- caution spelling, `syussya` and `taisya`.
-
-## Unreleased
 - command `at` is disabled on macos.
 - caution spell `syussya` and `taisya`
+
+## Unreleased
+- log file's TIMEZONE is not JST
 - Automator does not work while mac is sleeping.
   Must wake mac up before Automator runs.
-- 2023-02-03 error: java.net.ConnectException at wdc.clj:11:12
-- log file's TIMEZONE is not JST
+- pmset wake してもネットが不通な感じ。WiFi生きてたらつながるのか？
+  スリープ中に外から ping か ssh で起こすのは？それとも別PCで？
+  => WiFi 入れてたら動くのか？
 
 ## 0.1.3 - 2023-02-03
 - "env: bb:" No such file or directory
