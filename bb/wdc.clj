@@ -8,10 +8,8 @@
 
 (defn wdc [url params]
   (try
-    ;; こいつを入れたら動き出した。
-    ;; もうちょっとチェックを続ける。
-    (log/debug (:status (http/get "https://httpstat.us/200")) "httpstat.us")
-    ;;
+    ;; こいつを入れたら動き出した。もうちょっとチェックを続ける。
+    ;; (log/debug (:status (http/get "https://httpstat.us/200")) "httpstat.us")
     (log/debug (:status (http/post url {:form-params params})) url)
     (log/info  "wdc success" (params "dakoku"))
     (catch Exception e (log/error (.getMessage e)))))
