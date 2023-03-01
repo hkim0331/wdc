@@ -4,12 +4,14 @@
 - caution spell `syussya` and `taisya`
 
 ## Unreleased
-- log file's TIMEZONE is not JST
-- Automator does not work while mac is sleeping.
-  Must wake mac up before Automator runs.
-- pmset wake してもネットが不通な感じ。WiFi生きてたらつながるのか？
-  スリープ中に外から ping か ssh で起こすのは？それとも別PCで？
-  => WiFi 入れてたら動くのか？
+- log file's TIMEZONE is not JST, UTS.
+- should be 8:30-17:15?
+
+
+## 0.1.5 - 2023-03-01
+- copy wdc.sh to ~/bin/wdc
+- added pmset-g.sh
+- http-client 0.1.5
 
 ## 0.1.3 - 2023-02-03
 - "env: bb:" No such file or directory
