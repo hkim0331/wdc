@@ -4,9 +4,17 @@
 - caution spell `syussya` and `taisya`
 
 ## Unreleased
-- log file's TIMEZONE is not JST, UTS.
 - should be 8:30-17:15?
 
+## 0.2.0 - 2023-03-01
+- log in JST
+  switched from `clojure.tools.logging` to `taoensso.timbre`
+```
+(timbre/merge-config!
+ {:timestamp-opts
+  {:pattern "yyyy-MM-dd HH:mm:ss"
+   :timezone :jvm-default}})
+```
 
 ## 0.1.5 - 2023-03-01
 - copy wdc.sh to ~/bin/wdc
