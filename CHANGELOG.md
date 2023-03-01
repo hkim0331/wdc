@@ -5,6 +5,8 @@
 
 ## Unreleased
 - should be 8:30-17:15?
+- taoensso, MIN level.
+
 
 ## 0.2.0 - 2023-03-01
 - log in JST
