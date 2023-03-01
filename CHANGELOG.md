@@ -1,15 +1,17 @@
 # Chagelog
 
-- caution spelling, `syussya` and `taisya`.
-
-## Unreleased
 - command `at` is disabled on macos.
 - caution spell `syussya` and `taisya`
-- Automator does not work while mac is sleeping.
-  Must wake mac up before Automator runs.
-- 2023-02-03 error: java.net.ConnectException at wdc.clj:11:12
-- log file's TIMEZONE is not JST
 
+## Unreleased
+- log file's TIMEZONE is not JST, UTS.
+- should be 8:30-17:15?
+
+
+## 0.1.5 - 2023-03-01
+- copy wdc.sh to ~/bin/wdc
+- added pmset-g.sh
+- http-client 0.1.5
 
 ## 0.1.4 - 2023-02-24
 - pmset-sleep.sh
