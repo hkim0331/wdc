@@ -1,2 +1,7 @@
 {:paths ["bb"]
- :deps {org.babashka/http-client {:mvn/version "0.1.5"}}}
+ :deps {org.babashka/http-client {:mvn/version "0.1.5"}}
+ :tasks
+ {:requires ([babashka.fs :as fs])
+  install (fs/copy "wdc.sh"
+                   (fs/expand-home "~/bin/wdc")
+                   {:replace-existing true})}}
