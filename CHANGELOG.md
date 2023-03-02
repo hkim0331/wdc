@@ -1,15 +1,33 @@
 # Chagelog
 
-- caution spelling, `syussya` and `taisya`.
-
-## Unreleased
 - command `at` is disabled on macos.
 - caution spell `syussya` and `taisya`
-- Automator does not work while mac is sleeping.
-  Must wake mac up before Automator runs.
-- 2023-02-03 error: java.net.ConnectException at wdc.clj:11:12
-- log file's TIMEZONE is not JST
 
+## Unreleased
+- should be 8:30-17:15?
+- taoensso, MIN level.
+
+## 0.2.1 - 2023-03-02
+- **wdc.sh --log** - show log
+
+## 0.2.0 - 2023-03-01
+- log in JST
+  switched from `clojure.tools.logging` to `taoensso.timbre`
+```
+(timbre/merge-config!
+ {:timestamp-opts
+  {:pattern "yyyy-MM-dd HH:mm:ss"
+   :timezone :jvm-default}})
+```
+
+## 0.1.5 - 2023-03-01
+- copy wdc.sh to ~/bin/wdc
+- added pmset-g.sh
+- http-client 0.1.5
+
+## 0.1.4 - 2023-02-24
+- pmset-sleep.sh
+  changed sleep to sleep 60
 
 ## 0.1.3 - 2023-02-03
 - "env: bb:" No such file or directory
