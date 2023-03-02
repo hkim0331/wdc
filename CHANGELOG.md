@@ -1,17 +1,21 @@
 # Chagelog
 
-- command `at` is disabled on macos.
-- caution spell `syussya` and `taisya`
+Command `at` is disabled on macos.
+Invoke `wdc.sh` from Calenar.app.
+
+NB:
+`wdc.sh` includes a password, so the file is gitignored.
 
 ## Unreleased
 - should be 8:30-17:15?
-- taoensso, MIN level.
+- taoensso/timbre, MIN level.
+
 
 ## 0.2.2 - 2023-03-02
-- **data/** - to keep pmset changes.
+- `data/` - to keep pmset changes.
 
 ## 0.2.1 - 2023-03-02
-- **wdc.sh --log** - show log
+- `wdc.sh --log` - show log
 
 ## 0.2.0 - 2023-03-01
 - log in JST
