@@ -11,6 +11,15 @@ NB:
 - taoensso/timbre, MIN level.
 
 
+## 0.2.4 - 2023-03-03
+- timbre config adjustment
+```
+(timbre/merge-config!
+ {:min-level :info
+  :timestamp-opts
+  {:pattern "yyyy-MM-dd HH:mm:ss"
+   :timezone :jvm-default}})
+```
 ## 0.2.3 - 2023-03-03
 - `wdc --version` - show version info.
 

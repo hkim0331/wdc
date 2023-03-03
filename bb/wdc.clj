@@ -2,7 +2,8 @@
          '[taoensso.timbre :as timbre])
 
 (timbre/merge-config!
- {:timestamp-opts
+ {:min-level :info
+  :timestamp-opts
   {:pattern "yyyy-MM-dd HH:mm:ss"
    :timezone :jvm-default}})
 
@@ -14,14 +15,12 @@
 
 (defn wdc [url params]
   (try
-    ;; こいつを入れたら動き出した。もうちょっとチェックを続ける。
-    ;; (log/debug (:status (http/get "https://httpstat.us/200")) "httpstat.us")
     (timbre/debug (:status (http/post url {:form-params params})) url)
     (timbre/info  "wdc success" (params "dakoku"))
     (catch Exception e (timbre/error (.getMessage e)))))
 
 (let [verb (first *command-line-args*)]
-  (case verb
-    "in"  (wdc url (merge params {"dakoku" "syussya"}))
-    "out" (wdc url (merge params {"dakoku" "taisya"}))
-    (timbre/warn "usage: wdc.clj [in|out]")))
+  (cond
+    (= verb "in")  (wdc url (merge params {"dakoku" "syussya"}))
+    (= verb "out") (wdc url (merge params {"dakoku" "taisya"}))
+    :else (timbre/warn "usage: wdc.clj [in|out]")))
