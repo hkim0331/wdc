@@ -11,6 +11,9 @@ NB:
 - taoensso/timbre, MIN level.
 
 
+## 0.2.3 - 2023-03-03
+- `wdc --version` - show version info.
+
 ## 0.2.2 - 2023-03-02
 - `data/` - to keep pmset changes.
 
