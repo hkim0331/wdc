@@ -20,7 +20,7 @@
     (catch Exception e (timbre/error (.getMessage e)))))
 
 (let [verb (first *command-line-args*)]
-  (cond
-    (= verb "in")  (wdc url (merge params {"dakoku" "syussya"}))
-    (= verb "out") (wdc url (merge params {"dakoku" "taisya"}))
+  (case verb
+    "in"  (wdc url (merge params {"dakoku" "syussya"}))
+    "out" (wdc url (merge params {"dakoku" "taisya"}))
     :else (timbre/warn "usage: wdc.clj [in|out]")))

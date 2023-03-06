@@ -1,4 +1,4 @@
-# wdc
+# Web Dakoku Correct
 
 WEB 打刻の忘却防止。
 
@@ -6,11 +6,8 @@ WEB 打刻の忘却防止。
 それより早い出勤、遅い退勤の手動オペレーションで上書きになる。
 
 * Calendars に Automator 書類を仕込む。
-
 * pmset で sleep のタイミングを Automator に合わせる。
-
-* Automator の書類は ~/Library/Workflows/Applications/ 以下にセーブされる。
-
+* Automator の書類は ~/Library/Workflows/Applications/ 以下に見つかる。
 
 ## License
 
