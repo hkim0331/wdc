@@ -2,7 +2,7 @@
          '[taoensso.timbre :as timbre])
 
 (timbre/merge-config!
- {:min-level :info
+ {:min-level :debug
   :timestamp-opts
   {:pattern "yyyy-MM-dd HH:mm:ss"
    :timezone :jvm-default}})
@@ -15,8 +15,8 @@
 
 (defn wdc [url params]
   (try
-    (timbre/debug (:status (http/post url {:form-params params})) url)
-    (timbre/info  "wdc success" (params "dakoku"))
+    (let [resp (http/post url {:form-params params})]
+      (timbre/info  "wdc success" (params "dakoku") (:satus resp)))
     (catch Exception e (timbre/error (.getMessage e)))))
 
 (let [verb (first *command-line-args*)]
