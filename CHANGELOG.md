@@ -10,6 +10,12 @@ NB:
 - should be 8:30-17:15?
 - taoensso/timbre, MIN level.
 
+## 0.3.0 - 2023-03-07
+- API CHANGED: wdc.clj [in | out | version | log]
+- directory call `wdc.clj` from Automator.
+  instead, wdc env vars are defined in `.zshenv`.
+  new `wdc.sh` is now a simply wdc.clj wrapper. not gitignored.
+- FIXME: log displays whole `wdc.log` file
 
 ## 0.2.4 - 2023-03-03
 - timbre config adjustment
