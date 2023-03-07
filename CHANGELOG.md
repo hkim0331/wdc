@@ -8,14 +8,19 @@ NB:
 
 ## Unreleased
 - should be 8:30-17:15?
-- taoensso/timbre, MIN level.
+- log: when executing wdc from terminal, log apears there. does not log in file.
+
+## 0.3.1 - 2023-03-07
+- fixed: redirected log to log/wdc.log from automator scripts.
+- added: automator/ folder
+- changed: convined two pmset scripts int pmset.sh. just two lines.
 
 ## 0.3.0 - 2023-03-07
 - API CHANGED: wdc.clj [in | out | version | log]
 - directory call `wdc.clj` from Automator.
   instead, wdc env vars are defined in `.zshenv`.
-  new `wdc.sh` is now a simply wdc.clj wrapper. not gitignored.
-- FIXME: log displays whole `wdc.log` file
+  new `wdc.sh` is simply invoking `wdc.clj`. not gitignored.
+- FIXME: log displays whole `wdc.log` file. It's tail is enough.
 
 ## 0.2.4 - 2023-03-03
 - timbre config adjustment
