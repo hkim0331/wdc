@@ -10,6 +10,10 @@ NB:
 - should be 8:30-17:15?
 - log: when executing wdc from terminal, log apears there. does not log in file.
 
+## 0.3.1 - 2023-03-07
+- fixed: redirected log to log/wdc.log from automator scripts.
+- added: automator/ folder
+- changed: convined two pmset scripts int pmset.sh. just two lines.
 
 ## 0.3.0 - 2023-03-07
 - API CHANGED: wdc.clj [in | out | version | log]
