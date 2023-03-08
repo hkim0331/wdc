@@ -2,7 +2,7 @@
 
 ## Unreleased
 - should be 8:30-17:15?
-
+- RE in `bump-version.sh` is loose.
 
 ## 0.3.2 - 2023-03-08
 - added `bump-version.sh`
