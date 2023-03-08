@@ -3,7 +3,7 @@
  '[babashka.http-client :as http]
  '[taoensso.timbre :as timbre])
 
-(def version "0.3.0")
+(def version "0.3.1")
 
 (timbre/merge-config!
  {:min-level :debug

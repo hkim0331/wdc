@@ -1,14 +1,11 @@
 # Chagelog
 
-Command `at` is disabled on macos.
-Invoke `wdc.sh` from Calenar.app.
-
-NB:
-`wdc.sh` includes a password, so the file is gitignored.
-
 ## Unreleased
 - should be 8:30-17:15?
-- log: when executing wdc from terminal, log apears there. does not log in file.
+
+
+## 0.3.2 - 2023-03-08
+- added `bump-version.sh`
 
 ## 0.3.1 - 2023-03-07
 - fixed: redirected log to log/wdc.log from automator scripts.
