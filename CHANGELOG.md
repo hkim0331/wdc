@@ -2,7 +2,8 @@
 
 ## Unreleased
 - should be 8:30-17:15?
-- RE in `bump-version.sh` is loose.
+- regular exression in `bump-version.sh` is loose
+- forgot `help`
 
 ## 0.3.3-SNAPSHOT
 - `case` does not take :else clause
@@ -17,8 +18,13 @@
 
 ## 0.3.0 - 2023-03-07
 - API CHANGED: wdc.clj [in | out | version | log]
+<<<<<<< HEAD
 - directory call `wdc.clj` from Automator.
   instead, wdc env vars are defined in `.zshenv`.
+=======
+- directory call `wdc.clj` from Automator
+  instead, wdc env vars are defined in `.zshenv`
+>>>>>>> 4e346e4de1253abb6bae4e430bd7b2e3446ce290
   new `wdc.sh` is simply invoking `wdc.clj`. not gitignored
 - FIXME: log displays whole `wdc.log` file. It's tail is enough
 
@@ -74,10 +80,9 @@
 - added wdc-example.sh
 - use Automator
 - wake-before-wdc.sh: only one pmset repeat allowed
-  use corn? not so good.
+  use corn? not so good
 - check out as m64:clojure/wdc
 - symlink from m64:utils/wdc
-
 
 ## 0.1.0 - 2023-02-01
 - created repository: github.com/hkim0331/wdc.git
