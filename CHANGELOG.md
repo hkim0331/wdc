@@ -4,20 +4,23 @@
 - should be 8:30-17:15?
 - RE in `bump-version.sh` is loose.
 
+## 0.3.3-SNAPSHOT
+- `case` does not take :else clause
+
 ## 0.3.2 - 2023-03-08
 - added `bump-version.sh`
 
 ## 0.3.1 - 2023-03-07
-- fixed: redirected log to log/wdc.log from automator scripts.
+- fixed: redirected log to log/wdc.log from automator scripts
 - added: automator/ folder
-- changed: convined two pmset scripts int pmset.sh. just two lines.
+- changed: convined two pmset scripts int pmset.sh. just two lines
 
 ## 0.3.0 - 2023-03-07
 - API CHANGED: wdc.clj [in | out | version | log]
 - directory call `wdc.clj` from Automator.
   instead, wdc env vars are defined in `.zshenv`.
-  new `wdc.sh` is simply invoking `wdc.clj`. not gitignored.
-- FIXME: log displays whole `wdc.log` file. It's tail is enough.
+  new `wdc.sh` is simply invoking `wdc.clj`. not gitignored
+- FIXME: log displays whole `wdc.log` file. It's tail is enough
 
 ## 0.2.4 - 2023-03-03
 - timbre config adjustment
@@ -29,10 +32,10 @@
    :timezone :jvm-default}})
 ```
 ## 0.2.3 - 2023-03-03
-- `wdc --version` - show version info.
+- `wdc --version` - show version info
 
 ## 0.2.2 - 2023-03-02
-- `data/` - to keep pmset changes.
+- `data/` - to keep pmset changes
 
 ## 0.2.1 - 2023-03-02
 - `wdc.sh --log` - show log
@@ -70,7 +73,7 @@
 ## 0.1.1 - 2023-02-02
 - added wdc-example.sh
 - use Automator
-- wake-before-wdc.sh: only one pmset repeat allowed.
+- wake-before-wdc.sh: only one pmset repeat allowed
   use corn? not so good.
 - check out as m64:clojure/wdc
 - symlink from m64:utils/wdc

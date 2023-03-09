@@ -40,6 +40,6 @@
       "out" (wdc url (merge params {"dakoku" "taisya"}))
       "version" (println version)
       "log" (print-log)
-      :else (println "usage: wdc.clj [in | out | log | version]"))))
+      (println "usage: wdc.clj [in | out | log | version]"))))
 
 (-main)
