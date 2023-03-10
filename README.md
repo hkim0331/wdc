@@ -9,6 +9,8 @@ WEB 打刻の忘却防止。
 * pmset で sleep のタイミングを Automator に合わせる。
 * Automator の書類は ~/Library/Workflows/Applications/ 以下に見つかる。
 
+## Usage
+
 ## License
 
 Free. 2023 Hiroshi Kimura
