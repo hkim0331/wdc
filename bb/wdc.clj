@@ -1,9 +1,12 @@
 #!/usr/bin/env bb
 (require
+ '[babashka.fs :as fs]
  '[babashka.http-client :as http]
+ '[clojure.edn :as edn]
+ '[clojure.java.io :as io]
  '[taoensso.timbre :as timbre])
 
-(def version "0.3.2")
+(def version "0.3.3")
 
 (timbre/merge-config!
  {:min-level :debug
@@ -11,11 +14,21 @@
   {:pattern "yyyy-MM-dd HH:mm:ss"
    :timezone :jvm-default}})
 
-(def url (or (System/getenv "WDC_URL") "http://localhost:3000/"))
+(defn load-edn
+  "Load edn from an io/reader source (filename or io/resource)."
+  [source]
+  (try
+    (with-open [r (io/reader source)]
+      (edn/read (java.io.PushbackReader. r)))
+    (catch java.io.IOException e
+      (timbre/error "Couldn't open" source (.getMessage e)))
+    (catch RuntimeException e
+      (timbre/error "Error parsing edn file" source (.getMessage e)))))
 
-(def params {"user_id"  (or (System/getenv "WDC_USER") "user_id")
-             "password" (or (System/getenv "WDC_PASS") "password")
-             "watch"    ""})
+(def config (-> "~/.config/wdc/wdc.edn"
+                fs/expand-home
+                str
+                load-edn))
 
 (defn wdc [url params]
   (let [resp (http/post url {:form-params params})]
@@ -25,7 +38,7 @@
 
 ;; FIXME: tail
 (defn print-log []
-  (let [log (str (System/getenv "WDC_DIR") "/log/wdc.log")]
+  (let [log (str (fs/expand-home (:wdc-log config)))]
     (println (slurp log))))
 
 (comment
@@ -33,13 +46,17 @@
   :rcf)
 
 (defn -main []
-  (doseq [verb *command-line-args*]
-    ;; (println "verb" verb)
-    (case verb
-      "in"  (wdc url (merge params {"dakoku" "syussya"}))
-      "out" (wdc url (merge params {"dakoku" "taisya"}))
-      "version" (println version)
-      "log" (print-log)
-      (println "usage: wdc.clj [in | out | log | version]"))))
+  (let [url (:wdc-url config)
+        params {"user_id"  (:wdc-user config)
+                "password" (:wdc-pass config)
+                "watch"    ""}]
+    (doseq [verb *command-line-args*]
+      (case verb
+        "in"  (wdc url (merge params {"dakoku" "syussya"}))
+        "out" (wdc url (merge params {"dakoku" "taisya"}))
+        "version" (println version)
+        "log" (print-log)
+        (println "usage: wdc.clj [in | out | log | version]")))))
 
+;; FIXME: better way?
 (-main)

@@ -3,11 +3,13 @@
 ## Unreleased
 - should be 8:30-17:15?
 - regular exression in `bump-version.sh` is loose
-- forgot `help`
-- read .config/wdc, not ~/.zshenv
+- usage sun.nio.fs.UnixPath
 
-## 0.3.3-SNAPSHOT
+
+## 0.3.3 - 2023-03-10
+- read .config/wdc/wdc.edn, not ~/.zshenv
 - `case` does not take :else clause
+- `require` even if the libraries are built in
 
 ## 0.3.2 - 2023-03-08
 - added `bump-version.sh`
