@@ -1,12 +1,13 @@
 # Chagelog
 
 ## Unreleased
-- should be 8:30-17:15?
 - regular exression in `bump-version.sh` is loose
 - usage sun.nio.fs.UnixPath
+
+
+## 0.4.4-SNAPSHOT
 - FIXME: java.net/ConnectException at wdc.clj:34:14
 - FIXME: taisya のログがない？
-
 
 ## 0.3.3 - 2023-03-10
 - read .config/wdc/wdc.edn, not ~/.zshenv
