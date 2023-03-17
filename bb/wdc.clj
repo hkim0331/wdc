@@ -84,4 +84,5 @@
   )
 
 ;; FIXME: better way?
+;; clojure -M -m 
 (-main)
