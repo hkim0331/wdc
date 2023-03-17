@@ -6,7 +6,7 @@
  '[clojure.java.io :as io]
  '[taoensso.timbre :as timbre])
 
-(def version "0.4.4")
+(def version "0.4.4-SNAPSHOT")
 
 (timbre/merge-config!
  {:min-level :debug
