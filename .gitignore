@@ -1,12 +1,5 @@
 .calva/output-window/
 .clj-kondo/.cache/
 .lsp/.cache/
-poster-duct/
-WEB打刻_files/
-WEB打刻.html
-wdc.html
-wdc.sh
-wdc-in.sh
-wdc-out.sh
-data/
-log/
+/log/wdc.log
+*.bak
