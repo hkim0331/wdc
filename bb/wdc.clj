@@ -7,7 +7,7 @@
  '[clojure.java.io :as io]
  '[taoensso.timbre :as timbre])
 
-(def version "0.4.4-SNAPSHOT")
+(def version "0.5.0")
 
 (timbre/merge-config!
  {:min-level :debug
@@ -35,15 +35,32 @@
 
 ;; Added 2023-10-11
 ;; http --body --session where-is-me ${URL}/ loc="$*"
-(def url "https://w.hkim.jp/")
-(defn w_hkim_jp
-  "https://w.hkim.jp"
+(def url "w.hkim.jp")
+
+;; FIXME: does not work.
+;; (defn w-hkim-jp-send
+;;   [loc]
+;;   (let [cmd (str "https --ignore-stdin --session where-is me "
+;;                  url
+;;                  " loc='" loc "'")]
+;;     (ps/shell {:out "/dev/null"} cmd)))
+
+;; process/shell は stdin を開いてプロセスにつないでしまうのかな？
+;; --ignore-stdin を足さないとエラーになる。
+(defn w-hkim-jp
   [s]
-  (let [cmd (str "http --body --session where-is-me " url)]
+  (let [cmd (str "https --ignore-stdin --session where-is-me " url)]
     (case s
-      "syussya" (fs/shell (str cmd "loc='214.'"))
-      "taisya" (fs/shell (str cmd "loc='帰宅します'"))
+      ;; DRY!
+      "syussya" (ps/shell {:out "/dev/null"} (str cmd " loc='214着。'"))
+      "taisya"  (ps/shell {:out "/dev/null"} (str cmd " loc='帰宅します。'"))
       (throw (Exception. "error: w_hkim_jp")))))
+
+(comment
+  (ps/shell (str "https " url))
+  (w-hkim-jp "syussya")
+  (w-hkim-jp "taisya")
+  :rcf)
 
 (defn wdc [config]
   (try
@@ -56,14 +73,11 @@
       (if (= 200 (:status resp))
         (let [dakoku (params "dakoku")]
           (timbre/info "success" dakoku)
-          (w_hkim_jp dakoku)))
+          ;; (println "dakoku" dakoku)
+          (w-hkim-jp dakoku))
         (timbre/error resp)))
     (catch Exception e
-      (timbre/error (.getMessage e))
-      ;; retry?
-      ;; (Thread/sleep 30000)
-      ;; (wdc config)
-      )))
+      (timbre/error (.getMessage e)))))
 
 (comment
   (defn moop [n]
@@ -96,7 +110,7 @@
 
 (comment
   (-main "in")
-  )
+  :rcf)
 
 ;; FIXME: better way?
 ;; clojure -M -m
