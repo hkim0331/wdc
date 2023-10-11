@@ -1,6 +1,7 @@
 #!/usr/bin/env bb
 (require
  '[babashka.fs :as fs]
+ '[babashka.process :as ps]
  '[babashka.http-client :as http]
  '[clojure.edn :as edn]
  '[clojure.java.io :as io]
@@ -32,6 +33,18 @@
       str
       load-edn))
 
+;; Added 2023-10-11
+;; http --body --session where-is-me ${URL}/ loc="$*"
+(def url "https://w.hkim.jp/")
+(defn w_hkim_jp
+  "https://w.hkim.jp"
+  [s]
+  (let [cmd (str "http --body --session where-is-me " url)]
+    (case s
+      "syussya" (fs/shell (str cmd "loc='214.'"))
+      "taisya" (fs/shell (str cmd "loc='帰宅します'"))
+      (throw (Exception. "error: w_hkim_jp")))))
+
 (defn wdc [config]
   (try
     (let [url (:wdc-url config)
@@ -41,7 +54,9 @@
                   "watch"    ""}
           resp (http/post url {:form-params params})]
       (if (= 200 (:status resp))
-        (timbre/info "success" (params "dakoku"))
+        (let [dakoku (params "dakoku")]
+          (timbre/info "success" dakoku)
+          (w_hkim_jp dakoku)))
         (timbre/error resp)))
     (catch Exception e
       (timbre/error (.getMessage e))
@@ -84,5 +99,5 @@
   )
 
 ;; FIXME: better way?
-;; clojure -M -m 
+;; clojure -M -m
 (-main)
