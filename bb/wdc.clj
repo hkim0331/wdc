@@ -54,7 +54,8 @@
       ;; DRY!
       "syussya" (ps/shell {:out "/dev/null"} (str cmd " loc='214着。'"))
       "taisya"  (ps/shell {:out "/dev/null"} (str cmd " loc='帰宅します。'"))
-      (throw (Exception. "error: w_hkim_jp")))))
+      (throw (Exception. "error: w_hkim_jp")))
+    nil))
 
 (comment
   (ps/shell (str "https " url))
