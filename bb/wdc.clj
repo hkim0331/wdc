@@ -1,12 +1,13 @@
 #!/usr/bin/env bb
 (require
  '[babashka.fs :as fs]
+ '[babashka.process :as ps]
  '[babashka.http-client :as http]
  '[clojure.edn :as edn]
  '[clojure.java.io :as io]
  '[taoensso.timbre :as timbre])
 
-(def version "0.4.4-SNAPSHOT")
+(def version "0.5.0")
 
 (timbre/merge-config!
  {:min-level :debug
@@ -32,6 +33,35 @@
       str
       load-edn))
 
+;; Added 2023-10-11
+;; http --body --session where-is-me ${URL}/ loc="$*"
+(def url "w.hkim.jp")
+
+;; FIXME: does not work.
+;; (defn w-hkim-jp-send
+;;   [loc]
+;;   (let [cmd (str "https --ignore-stdin --session where-is me "
+;;                  url
+;;                  " loc='" loc "'")]
+;;     (ps/shell {:out "/dev/null"} cmd)))
+
+;; process/shell は stdin を開いてプロセスにつないでしまうのかな？
+;; --ignore-stdin を足さないとエラーになる。
+(defn w-hkim-jp
+  [s]
+  (let [cmd (str "https --ignore-stdin --session where-is-me " url)]
+    (case s
+      ;; DRY!
+      "syussya" (ps/shell {:out "/dev/null"} (str cmd " loc='214着。'"))
+      "taisya"  (ps/shell {:out "/dev/null"} (str cmd " loc='帰宅します。'"))
+      (throw (Exception. "error: w_hkim_jp")))))
+
+(comment
+  (ps/shell (str "https " url))
+  (w-hkim-jp "syussya")
+  (w-hkim-jp "taisya")
+  :rcf)
+
 (defn wdc [config]
   (try
     (let [url (:wdc-url config)
@@ -41,14 +71,13 @@
                   "watch"    ""}
           resp (http/post url {:form-params params})]
       (if (= 200 (:status resp))
-        (timbre/info "success" (params "dakoku"))
+        (let [dakoku (params "dakoku")]
+          (timbre/info "success" dakoku)
+          ;; (println "dakoku" dakoku)
+          (w-hkim-jp dakoku))
         (timbre/error resp)))
     (catch Exception e
-      (timbre/error (.getMessage e))
-      ;; retry?
-      ;; (Thread/sleep 30000)
-      ;; (wdc config)
-      )))
+      (timbre/error (.getMessage e)))))
 
 (comment
   (defn moop [n]
@@ -81,8 +110,8 @@
 
 (comment
   (-main "in")
-  )
+  :rcf)
 
 ;; FIXME: better way?
-;; clojure -M -m 
+;; clojure -M -m
 (-main)

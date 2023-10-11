@@ -5,6 +5,9 @@
 - usage sun.nio.fs.UnixPath
 
 
+## 0.5.0 - 2023-10-11
+- added w_hkim_jp
+  call https://w.hkim.jp from `wdc-in` and `wdc-out`.
 
 ## 0.4.4-SNAPSHOT
 - FIXME: java.net/ConnectException at wdc.clj:34:14
